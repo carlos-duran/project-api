@@ -1,23 +1,22 @@
+import { env } from "@/constants/env";
+import { JWTPayload } from "@/modules/auth/types";
 import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { jwt } from "hono/jwt";
 import { z } from "zod";
-import { env } from "../constants/env";
-import { ObjectIdSchema } from "../schemas/validators/object-id";
-import {
-	CreateUser,
-	PatchUser,
-	ResponseUser,
-} from "../schemas/validators/user";
+import { CreateUser, PatchUser, ResponseUser } from "./dto";
 import {
 	createUser,
 	deleteUser,
 	getUser,
 	getUsers,
 	updateUser,
-} from "../services/users";
-import { JWTPayload } from "../types/auth";
+} from "./service";
+
+const ObjectIdSchema = z
+	.string()
+	.regex(/[0-9a-f]{24}/, "Debe ser un id válido");
 
 export const users = new Hono();
 

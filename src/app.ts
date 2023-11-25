@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import { auth } from "./routes/auth";
-import { users } from "./routes/users";
+import { auth } from "./modules/auth/router";
+import { users } from "./modules/users/router";
 
 const app = new Hono();
 

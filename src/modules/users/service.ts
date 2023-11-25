@@ -1,8 +1,8 @@
+import { db } from "@/core/db";
 import { hash } from "bcryptjs";
 import { ObjectId } from "mongodb";
-import { db } from "../core/db";
-import { UserEntity } from "../schemas/entities/user";
-import { CreateUser, PatchUser } from "../schemas/validators/user";
+import { CreateUser, PatchUser } from "./dto";
+import { UserEntity } from "./entity";
 
 const Users = db.collection<UserEntity>("users");
 

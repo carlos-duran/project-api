@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { UserEntity } from "../entities/user";
+import { UserEntity } from "./entity";
 
 export const CreateUser = UserEntity.omit({ _id: true }).extend({
 	password: z.string().max(100),

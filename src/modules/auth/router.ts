@@ -1,16 +1,16 @@
+import { env } from "@/constants/env";
+import { getUserByEmail } from "@/modules/users/service";
 import { zValidator } from "@hono/zod-validator";
 import { compare } from "bcryptjs";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { sign } from "hono/jwt";
-import { env } from "../constants/env";
-import { LoginUser } from "../schemas/validators/auth";
-import { getUserByEmail } from "../services/users";
-import { JWTPayload } from "../types/auth";
+import { LoginUserDto } from "./dto";
+import { JWTPayload } from "./types";
 
 export const auth = new Hono();
 
-auth.post("/login", zValidator("json", LoginUser), async (c) => {
+auth.post("/login", zValidator("json", LoginUserDto), async (c) => {
 	const loginUser = c.req.valid("json");
 
 	const user = await getUserByEmail(loginUser.email);
