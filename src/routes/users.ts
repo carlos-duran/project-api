@@ -1,4 +1,15 @@
+import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
+import { HTTPException } from "hono/http-exception";
+import { jwt } from "hono/jwt";
+import { z } from "zod";
+import { env } from "../constants/env";
+import { ObjectIdSchema } from "../schemas/validators/object-id";
+import {
+	CreateUser,
+	PatchUser,
+	ResponseUser,
+} from "../schemas/validators/user";
 import {
 	createUser,
 	deleteUser,
@@ -6,18 +17,7 @@ import {
 	getUsers,
 	updateUser,
 } from "../services/users";
-import { zValidator } from "@hono/zod-validator";
-import { z } from "zod";
-import { ObjectIdSchema } from "../schemas/validators/object-id";
-import {
-	CreateUser,
-	PatchUser,
-	ResponseUser,
-} from "../schemas/validators/user";
-import { jwt } from "hono/jwt";
 import { JWTPayload } from "../types/auth";
-import { HTTPException } from "hono/http-exception";
-import { env } from "../constants/env";
 
 export const users = new Hono();
 

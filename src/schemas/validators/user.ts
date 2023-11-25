@@ -2,7 +2,7 @@ import { z } from "zod";
 import { UserEntity } from "../entities/user";
 
 export const CreateUser = UserEntity.omit({ _id: true }).extend({
-  password: z.string().max(100),
+	password: z.string().max(100),
 });
 
 export type CreateUser = z.infer<typeof CreateUser>;
