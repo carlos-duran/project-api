@@ -1,0 +1,20 @@
+{
+	"name": "project-api",
+	"scripts": {
+		"start": "tsx watch src/index.ts"
+	},
+	"dependencies": {
+		"@hono/node-server": "^1.2.3",
+		"@hono/zod-validator": "^0.1.11",
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^16.3.1",
+		"hono": "^3.10.2",
+		"mongodb": "6.3",
+		"zod": "^3.22.4"
+	},
+	"devDependencies": {
+		"@types/bcryptjs": "^2.4.6",
+		"@types/node": "^20.10.0",
+		"tsx": "^3.12.2"
+	}
+}
