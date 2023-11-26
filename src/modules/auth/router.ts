@@ -25,6 +25,8 @@ auth.post("/login", zValidator("json", LoginUserDto), async (c) => {
 	const payload: JWTPayload = {
 		id: user._id.toString(),
 		role: user.role,
+		iat: Math.ceil(Date.now() / 1000),
+		exp: Math.ceil(Date.now() / 1000) + 60 * 60,
 	};
 
 	const token = await sign(payload, env.JWT_SECRET);
